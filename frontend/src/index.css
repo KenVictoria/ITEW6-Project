@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-ccs-orange: #ff6b00;
+  --color-ccs-orange-dark: #e65f00;
+  --color-ccs-orange-soft: #fff3e6;
+  --color-ccs-ink: #0f172a;
+  --color-ccs-muted: #64748b;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+
+  /* Smooth skeleton animations */
+@keyframes shimmer {
+  0% {
+      background-position: -200% 0;
+  }
+  100% {
+      background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+}
