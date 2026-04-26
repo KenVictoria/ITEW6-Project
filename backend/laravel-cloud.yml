@@ -1,0 +1,40 @@
+name: ccs-profiling-system
+type: laravel
+
+# Build configuration
+build:
+  - "composer install --optimize-autoloader --no-dev"
+  - "php artisan config:cache"
+  - "php artisan route:cache"
+  - "php artisan view:cache"
+
+# Deploy configuration
+deploy:
+  - "php artisan migrate --force"
+  - "php artisan db:seed --force"
+  - "php artisan storage:link"
+
+# Environment variables
+environment:
+  APP_ENV: production
+  APP_DEBUG: false
+  APP_URL: "${APP_URL}"
+  FRONTEND_URL: "${FRONTEND_URL}"
+
+# Database (Laravel Cloud handles this automatically)
+database:
+  engine: mysql
+  version: "8.0"
+
+# PHP version
+php: "8.2"
+
+# Web server
+web:
+  nginx: true
+  php_fpm: true
+
+# Storage
+storage:
+  - public
+  - storage/app
